@@ -4,6 +4,23 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"> </script>
 	<script src="js/draw.js"> </script>
 	<script src="js/jquery.wheelcolorpicker-3.0.2.min.js"> </script>
+	<script async defer src="https://buttons.github.io/buttons.js"> </script>
+	<script>window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+			    t = window.twttr || {};
+		  if (d.getElementById(id)) return t;
+		  js = d.createElement(s);
+		  js.id = id;
+		  js.src = "https://platform.twitter.com/widgets.js";
+		  fjs.parentNode.insertBefore(js, fjs);
+
+		  t._e = [];
+		  t.ready = function(f) {
+				    t._e.push(f);
+				  };
+
+		  return t;
+	}(document, "script", "twitter-wjs"));</script>
 <style type="text/css">
 #pad {
 	border: 2px solid grey;
@@ -66,6 +83,10 @@ body {
 			<p> Brush size: </p>
 			<input id="brushsize" type="range" min="5" max="100">
 			<p> <a href="#" id="download">Download image</a> </p>
+			<p> If you have ideas on how to improve this site, feel free to let me
+			know </p>
+			<a class="twitter-share-button" href="https://twitter.com/intent/tweet?via=WillPettersson">Twitter (@WillPettersson)</a>
+			<a class="github-button" href="https://github.com/wpettersson/drawCassini/issues">GitHub</a>
 		</div>
 	</div>
 </body>
