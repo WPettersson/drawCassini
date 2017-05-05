@@ -48,6 +48,11 @@ $(document).ready(function (e) {
 		e.preventDefault();
 	});
 
+	$("#alpha").mouseleave(function (e) {
+		painting = false;
+		e.preventDefault();
+	});
+
 });
 
 
