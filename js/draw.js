@@ -19,6 +19,11 @@ cassiniAlpha.onload = function() {
 	alphaContext.drawImage(cassiniAlpha, 0, 0);
 };
 
+var merge = document.createElement("canvas");
+merge.width = 1024;
+merge.height = 1024;
+var mergeContext = merge.getContext("2d");
+
 $(document).ready(function (e) {
 
 	$("#alpha").mousedown(function (e) {
@@ -53,11 +58,18 @@ $(document).ready(function (e) {
 		e.preventDefault();
 	});
 
+
+	$("#download").click(function (e) {
+		mergeContext.drawImage($("#pad")[0], 0, 0);
+		mergeContext.drawImage($("#alpha")[0], 0, 0);
+		$("#download").attr("href", merge.toDataURL());
+		$("#download").attr("download", "cassini-coloured.png");
+	});
 });
 
 
 function drawLine(x, y) {
-	var canvas = document.getElementById("pad");
+	var canvas = $("#pad")[0];
 	var context = canvas.getContext("2d");
 	var color = $("#wcp").wheelColorPicker("getValue", "css");
 	context.strokeStyle = color;
