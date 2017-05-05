@@ -7,14 +7,19 @@ cassini.src = "cassini.jpg";
 var cassiniAlpha = new Image;
 cassiniAlpha.src = "cassiniAlpha.png";
 
-
-$(document).ready(function (e) {
+cassini.onload = function() {
 	var pad = $("#pad")[0];
 	var context = pad.getContext("2d");
-	context.drawImage(cassini, 0, 0)
+	context.drawImage(cassini, 0, 0);
+};
+
+cassiniAlpha.onload = function() {
 	var alphaPad = $("#alpha")[0];
 	var alphaContext = alphaPad.getContext("2d");
-	alphaContext.drawImage(cassiniAlpha, 0, 0)
+	alphaContext.drawImage(cassiniAlpha, 0, 0);
+};
+
+$(document).ready(function (e) {
 
 	$("#alpha").mousedown(function (e) {
 		var parentOffset = $("#images").offset();
