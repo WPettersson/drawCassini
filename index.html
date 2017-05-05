@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"> </script>
+	<script src="js/draw.js"> </script>
+	<script src="js/jquery.wheelcolorpicker-3.0.2.min.js"> </script>
+<style type="text/css">
+#pad {
+	border: 2px solid grey;
+	margin: auto;
+	z-index: 3;
+	position: absolute;
+	top: 2px;
+	left: 2px;
+}
+
+#alpha {
+	border: 2px solid grey;
+	margin: auto;
+	z-index: 5;
+	position: absolute;
+	top: 2px;
+	left: 2px;
+}
+
+#images {
+	position: relative;
+}
+
+#contents {
+	margin: auto;
+	width: 1400px;
+}
+
+#controls {
+	position: relative;
+	left: 1024px;
+	display: inline-block;
+	width: 300px;
+	vertical-align: top;
+	margin: 30px;
+}
+
+body {
+	background: black;
+	color: white;
+}
+
+</style>
+<link href="css/wheelcolorpicker.dark.css" rel="stylesheet">
+<meta charset="UTF-8">
+<title>Draw Cassini</title>
+</head>
+
+<body>
+	<div id="contents">
+		<div id="images">
+		<canvas id="alpha" width="1024" height="1024" border="5">
+		</canvas>
+		<canvas id="pad" width="1024" height="1024" border="5">
+		</canvas>
+		</div>
+		<div id="controls">
+			<p> Colour: </p>
+			<input id="wcp" type="text" data-wheelcolorpicker data-wcp-layout="block" />
+			<p> Brush size: </p>
+			<input id="brushsize" type="range" min="5" max="100">
+		</div>
+	</div>
+</body>
+
+</html>
