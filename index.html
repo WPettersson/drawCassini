@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"> </script>
 	<script src="js/draw.js"> </script>
 	<script src="js/jquery.wheelcolorpicker-3.0.2.min.js"> </script>
@@ -58,6 +59,13 @@
 	margin: 30px;
 }
 
+#imageSelector {
+	float: left;
+	padding-left: 20px;
+	padding-top: 20px;
+	width: 128px;
+}
+
 body {
 	background: black;
 	color: white;
@@ -70,6 +78,10 @@ body {
 </head>
 
 <body>
+	<div id="imageSelector">
+		<p>Pick an image:</p>
+
+	</div>
 	<div id="contents">
 		<div id="images" width=1034>
 		<canvas id="alpha" width="1024" height="1024" border="5">

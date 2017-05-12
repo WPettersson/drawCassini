@@ -2,29 +2,55 @@ var painting;
 var lastX;
 var lastY;
 
-var cassini = new Image;
-cassini.src = "cassini.jpg";
-var cassiniAlpha = new Image;
-cassiniAlpha.src = "cassiniAlpha.png";
-
-cassini.onload = function() {
-	var pad = $("#pad")[0];
-	var context = pad.getContext("2d");
-	context.drawImage(cassini, 0, 0);
-};
-
-cassiniAlpha.onload = function() {
-	var alphaPad = $("#alpha")[0];
-	var alphaContext = alphaPad.getContext("2d");
-	alphaContext.drawImage(cassiniAlpha, 0, 0);
-};
-
 var merge = document.createElement("canvas");
 merge.width = 1024;
 merge.height = 1024;
 var mergeContext = merge.getContext("2d");
 
+
+
+imageChoices = ["cassini", "titan", "titan2", "titan3", "saturn-rings", "saturn-rings2",
+	"saturn-rings3", "saturn-rings4", "saturn-rings5"];
+
 $(document).ready(function (e) {
+	images = []
+	alphas = []
+	for (name in imageChoices) {
+		var im = new Image;
+		im.src = (imageChoices[name] + ".jpg")
+		var al = new Image
+		al.src = (imageChoices[name] + "-alpha.png")
+		images.push(im)
+		alphas.push(al)
+
+		clickable = new Image;
+		clickable.src = (imageChoices[name] + "-small.jpg")
+		$(clickable).data("index", name);
+		$("#imageSelector").append(clickable);
+		$(clickable).click(function (e) {
+			var pad = $("#pad")[0];
+			var context = pad.getContext("2d");
+			index = $( this ).data("index");
+			context.clearRect(0, 0, pad.width, pad.height);
+			context.drawImage(images[index], 0, 0);
+			var alphaPad = $("#alpha")[0];
+			var alphaContext = alphaPad.getContext("2d");
+			alphaContext.clearRect(0, 0, alphaPad.width, alphaPad.height);
+			alphaContext.drawImage(alphas[index], 0, 0);
+			e.preventDefault();
+		});
+	}
+	images[0].onload = function() {
+		var pad = $("#pad")[0];
+		var context = pad.getContext("2d");
+		context.drawImage(images[0], 0, 0);
+	};
+
+	alphas[0].onload = function() {
+		var alphaPad = $("#alpha")[0];
+		var alphaContext = alphaPad.getContext("2d");
+		alphaContext.drawImage(alphas[0], 0, 0);
+	};
 
 	$("#alpha").mousedown(function (e) {
 		var parentOffset = $("#images").offset();
@@ -63,7 +89,7 @@ $(document).ready(function (e) {
 		mergeContext.drawImage($("#pad")[0], 0, 0);
 		mergeContext.drawImage($("#alpha")[0], 0, 0);
 		$("#download").attr("href", merge.toDataURL());
-		$("#download").attr("download", "cassini-coloured.png");
+		$("#download").attr("download", "coloured.png");
 	});
 });
 
